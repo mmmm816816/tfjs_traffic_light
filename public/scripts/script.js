@@ -129,13 +129,13 @@ function displayCanvas(prediction) {
             let r = frame.data[i * 4 + 0];
             let g = frame.data[i * 4 + 1];
             let b = frame.data[i * 4 + 2];
-            if (r <= 100) {// && g <= 200 && b <= 200) {
+            if (r <= 225 && g >= 50 && b >= 50) {
                 frame.data[i * 4 + 3] = 0; // opacity = zero
                 num -= 1;
             }
         }
         ctx.putImageData(frame, 0, 0);
-        cnt.innerText = num;
+        cnt.innerText = num + '/' + l + '(' + Math.round(num/l*1000)/10 +' %)';
         //console.log(frame.data.length); // 518400 = 480 * 270 * 4
         // }, 1000 / 30);
     }, 1000 / 15); // ideal < frameRate
